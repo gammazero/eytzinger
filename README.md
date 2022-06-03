@@ -1,6 +1,6 @@
 # eytzinger
 
-![GoDoc](https://pkg.go.dev/badge/github.com/gammazero/eytzinger)](https://pkg.go.dev/github.com/gammazero/eytzinger)
+[![GoDoc](https://pkg.go.dev/badge/github.com/gammazero/eytzinger)](https://pkg.go.dev/github.com/gammazero/eytzinger)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Eytzinger binary search, minimalistic implementation.
