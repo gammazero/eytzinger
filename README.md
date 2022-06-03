@@ -5,6 +5,8 @@
 
 Eytzinger binary search, minimalistic implementation.
 
+Package eytzinger implements Eytzinger Binary Search, using generics to operate on any [ordered](https://pkg.go.dev/golang.org/x/exp/constraints#Ordered) type.
+
 ## Installation
 
 ```
