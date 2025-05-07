@@ -2,6 +2,7 @@ package eytzinger
 
 import (
 	"math/rand"
+	"slices"
 	"testing"
 	"time"
 )
@@ -44,5 +45,29 @@ func TestEytzinger(t *testing.T) {
 				t.Fatalf("Search did not return correct index for %d, expected %d got %d", find, i, index)
 			}
 		}
+	}
+}
+
+func TestIndexMapping(t *testing.T) {
+	expect := [][]int{
+		{0},
+		{1, 0},
+		{1, 0, 2},
+		{2, 1, 3, 0},
+		{3, 1, 4, 0, 2},
+		{3, 1, 5, 0, 2, 4},
+		{3, 1, 5, 0, 2, 4, 6},
+		{4, 2, 6, 1, 3, 5, 7, 0},
+		{5, 3, 7, 1, 4, 6, 8, 0, 2},
+		{6, 3, 8, 1, 5, 7, 9, 0, 2, 4},
+	}
+	a := make([]int, 0, 10)
+	for i := 0; i < cap(a); i++ {
+		a = append(a, i)
+		Sort(a)
+		if !slices.Equal(a, expect[i]) {
+			t.Fatal("expected", expect[i], "got", a)
+		}
+		t.Log(a)
 	}
 }

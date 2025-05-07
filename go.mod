@@ -1,5 +1,5 @@
 module github.com/gammazero/eytzinger
 
-go 1.18
+go 1.23.0
 
-require golang.org/x/exp v0.0.0-20220602145555-4a0574d9293f
+require golang.org/x/exp v0.0.0-20250506013437-ce4c2cf36ca6

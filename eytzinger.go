@@ -2,8 +2,9 @@
 package eytzinger
 
 import (
+	"slices"
+
 	"golang.org/x/exp/constraints"
-	"sort"
 )
 
 // Search does a binary search of an array sorted in Eytzinger order.
@@ -24,22 +25,11 @@ func Search[T constraints.Ordered](a []T, x T) int {
 
 // Sort sorts the given array into Eytzinger order.
 func Sort[T constraints.Ordered](a []T) {
-	s := sorter[T]{
-		items: a,
-	}
-	sort.Sort(s)
+	slices.Sort(a)
 	sorted := make([]T, len(a))
 	eytzinger[T](a, sorted, 0, 1)
 	copy(a, sorted)
 }
-
-type sorter[T constraints.Ordered] struct {
-	items []T
-}
-
-func (s sorter[T]) Len() int           { return len(s.items) }
-func (s sorter[T]) Less(i, j int) bool { return s.items[i] < s.items[j] }
-func (s sorter[T]) Swap(i, j int)      { s.items[i], s.items[j] = s.items[j], s.items[i] }
 
 func eytzinger[T constraints.Ordered](in, out []T, i, k int) int {
 	if k <= len(in) {
